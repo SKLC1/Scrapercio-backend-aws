@@ -39,24 +39,25 @@ async function scrapeEvents(bot, userConfig, iteration){
       done = true
       return;
     }
-    //delete last input 
-    page.waitForSelector('.search-global-typeahead__input', {visible: true})
-    await page.evaluate( () => document.querySelector(".search-global-typeahead__input").value = "")
-    //write keyword
-    page.waitForSelector('.search-global-typeahead__input', {visible: true})
-    await page.type(".search-global-typeahead__input",`${config.keywords[i]}`,{delay: 15})
-    await page.keyboard.press('Enter');
-    // insert keyword
-    await page.waitForTimeout(4000 + randomWait());
-    page.waitForSelector("#search-reusables__filters-bar > ul > li", {visible: true})
-    const buttons = await page.$$("#search-reusables__filters-bar > ul > li")
-    for (const li of buttons) {
-      let value = await page.evaluate(el => el.textContent, li)
-      if(value.includes('Events')){
-        await li.click()
-      }
-    }
-
+    // //delete last input 
+    // page.waitForSelector('.search-global-typeahead__input', {visible: true})
+    // await page.evaluate( () => document.querySelector(".search-global-typeahead__input").value = "")
+    // //write keyword
+    // page.waitForSelector('.search-global-typeahead__input', {visible: true})
+    // await page.type(".search-global-typeahead__input",`${config.keywords[i]}`,{delay: 15})
+    // await page.keyboard.press('Enter');
+    // // insert keyword
+    // await page.waitForTimeout(4000 + randomWait());
+    // page.waitForSelector("#search-reusables__filters-bar > ul > li", {visible: true})
+    // const buttons = await page.$$("#search-reusables__filters-bar > ul > li")
+    // for (const li of buttons) {
+    //   let value = await page.evaluate(el => el.textContent, li)
+    //   if(value.includes('Events')){
+    //     await li.click()
+    //   }
+    // }
+    await page.goto(`https://www.linkedin.com/search/results/events/?keywords=${config.keywords[i]}&origin=SWITCH_SEARCH_VERTICAL&sid=k8i`)
+    await page.waitForTimeout(2000)
     await captureResponse(page,browser,config, config.keywords[i])
     
   }
@@ -107,8 +108,8 @@ openLinkedIn(browser, page, user1, userConfig, "Posts")
  return eventLinks
 }
 
-// scrapeEvents({email: "fasonjamasi@gmail.com",password: "asdfasdf12345"},
-// { config: {threshold: 0, scrollCount: 5, keywords: ['cyber','hiring']}}, 0)
+scrapeEvents({email: "fasonjamasi@gmail.com",password: "asdfasdf12345"},
+{ config: {threshold: 0, scrollCount: 5, keywords: ['cyber','hiring']}}, 0)
 
 function randomWait(){
   const random = Math.random() * (2000 - 500) + 500;
