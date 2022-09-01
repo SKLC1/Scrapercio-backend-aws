@@ -108,8 +108,8 @@ openLinkedIn(browser, page, user1, userConfig, "Posts")
  return eventLinks
 }
 
-scrapeEvents({email: "fasonjamasi@gmail.com",password: "asdfasdf12345"},
-{ config: {threshold: 0, scrollCount: 5, keywords: ['cyber','hiring']}}, 0)
+// scrapeEvents({email: "fasonjamasi@gmail.com",password: "asdfasdf12345"},
+// { config: {threshold: 0, scrollCount: 5, keywords: ['cyber','hiring']}}, 0)
 
 function randomWait(){
   const random = Math.random() * (2000 - 500) + 500;
