@@ -10,6 +10,7 @@ const user4 = {email: "fasonjamasi@gmail.com",password: "asdfasdf12345"};
 
 
 async function scrapePostsV2(bot, userConfig, iteration){
+  let printLogger = []
   let data = []; 
   let finalData = []; 
   let done = false;
@@ -33,15 +34,24 @@ async function scrapePostsV2(bot, userConfig, iteration){
   await page.waitForTimeout(1000 + randomWait());
   await page.click(".btn__primary--large")
   await page.waitForTimeout(5000 + randomWait());
+  //!
+  let html = await page.content()
+  console.log(html);
+  printLogger.push(html)
+  //!
   getRawData(page,browser,config)
 } catch(error) {
   throw error
-  }
 }
-
+}
   async function getRawData(page,browser,config){
     for (let i = 0; i < config.keywords.length; i++) {
       await page.goto(`https://www.linkedin.com/search/results/content/?datePosted=%22past-week%22&keywords=${config.keywords[i]}&origin=FACETED_SEARCH&sid=(s%40`)
+      //!
+     let html = await page.content()
+     console.log(html);
+     printLogger.push(html)
+      //!
       await captureResponse(page,browser,config, config.keywords[i])
       if(i + 1 === config.keywords.length){
         console.log(i + 1);
@@ -147,7 +157,8 @@ async function scrapePostsV2(bot, userConfig, iteration){
 
   await waitUntil(() => done)
   await browser.close()
-  return finalData
+  // return finalData
+  return printLogger
 }
 
 function randomWait(){
