@@ -15,7 +15,7 @@ async function scrapeEvents(bot, userConfig, iteration){
   const desiredAmountOfLinks = userConfig.config.scrollCount
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: ['--no-sandbox','--disable-setuid-sandbox'],
   });
   const page = await browser.newPage();
