@@ -16,7 +16,7 @@ async function scrapePostsV2(bot, userConfig, iteration){
   const desiredAmountOfLinks = userConfig.config.scrollCount
 
   const browser = await puppeteer.launch({
-    headless: true,
+    headless: false,
     args: ['--no-sandbox','--disable-setuid-sandbox'],
   });
   const page = await browser.newPage();
@@ -33,13 +33,12 @@ async function scrapePostsV2(bot, userConfig, iteration){
   await page.waitForTimeout(1000 + randomWait());
   await page.click(".btn__primary--large")
   await page.waitForTimeout(5000 + randomWait());
-  let bodyHTML = await page.evaluate(() =>  document.documentElement.outerHTML);
-  return bodyHTML
-   getRawData(page,browser,config)
-   } catch(error) {
-    throw error
-   }
+  getRawData(page,browser,config)
+} catch(error) {
+  throw error
   }
+}
+
   async function getRawData(page,browser,config){
     for (let i = 0; i < config.keywords.length; i++) {
       await page.goto(`https://www.linkedin.com/search/results/content/?datePosted=%22past-week%22&keywords=${config.keywords[i]}&origin=FACETED_SEARCH&sid=(s%40`)
@@ -131,7 +130,7 @@ async function scrapePostsV2(bot, userConfig, iteration){
     }
   }
   
-  openLinkedIn(browser, page, user4, userConfig)
+  openLinkedIn(browser, page, user1, userConfig)
 
   const waitUntil = (condition) => {
    return new Promise((resolve) => {

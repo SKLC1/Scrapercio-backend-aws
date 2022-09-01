@@ -3,6 +3,7 @@ import express from 'express'
 import convertToCSV from '../scraper/createCSV.js'
 import scrapeEvents from '../scraper/eventsScraper.js'
 import scrapePostsV2 from '../scraper/postsScraper.js'
+import scrapeTest from '../scraper/test.js'
 export const resumeRouter = express.Router()
 
 resumeRouter.post('/scrape', async (req,res)=>{
@@ -19,10 +20,10 @@ resumeRouter.post('/scrape', async (req,res)=>{
   }
 })
 
-resumeRouter.post('/attend', async (req,res)=>{
+resumeRouter.post('/test', async (req,res)=>{
   try {
-    const res = await registerToEvents({email: "tamirgalim@gmail.com",password: "asdfasdf12345"}, req.body.eventLinks)
-    res.json(res)
+    const testRes = await scrapeTest({email: "tamirgalim@gmail.com",password: "asdfasdf12345"}, req.body)
+    res.json(testRes)
   } catch (error) {
     res.json({message: error.message})
   }
