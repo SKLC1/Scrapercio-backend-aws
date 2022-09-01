@@ -33,6 +33,8 @@ async function scrapePostsV2(bot, userConfig, iteration){
   await page.waitForTimeout(1000 + randomWait());
   await page.click(".btn__primary--large")
   await page.waitForTimeout(5000 + randomWait());
+  let bodyHTML = await page.evaluate(() =>  document.documentElement.outerHTML);
+  return bodyHTML
    getRawData(page,browser,config)
    } catch(error) {
     throw error
