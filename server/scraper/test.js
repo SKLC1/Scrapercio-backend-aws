@@ -12,6 +12,8 @@ async function scrapeTest(bot, userConfig, iteration){
     await page.waitForTimeout(1000 + randomWait());
     await page.click(".btn__primary--large")
     await page.waitForTimeout(5000 + randomWait());
+
+    
   } catch(error) {
     throw error
   }

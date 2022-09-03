@@ -8,9 +8,9 @@ export const resumeRouter = express.Router()
 
 resumeRouter.post('/scrape', async (req,res)=>{
   try {
-    const scrapeResult = await scrapePostsV2({email: "tamirgalim@gmail.com",password: "asdfasdf12345"}, req.body)
+    const scrapeResult = await scrapePostsV2({email: "fordjason363@gmail.com",password: "asdfasdf12345"}, req.body)
     if(req.body.config.getEvents === true){
-     const resEvents = await scrapeEvents({email: "tamirgalim@gmail.com",password: "asdfasdf12345"}, req.body)
+     const resEvents = await scrapeEvents({email: "fordjason363@gmail.com",password: "asdfasdf12345"}, req.body)
      scrapeResult.push({events: resEvents})
     }
     console.log(`SCRAPE RES: ${scrapeResult}`);
