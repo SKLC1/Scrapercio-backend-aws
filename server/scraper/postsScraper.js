@@ -7,6 +7,7 @@ const user1 = {email: "tamirgalim@gmail.com",password: "asdfasdf12345"};
 const user2 = {email: "ukd5880@gmail.com",password: ")x-B=MV_X%dtw3="}; // banned
 const user3 = {email: "davidglaritz@gmail.com",password: "David5101!"};
 const user4 = {email: "fasonjamasi@gmail.com",password: "asdfasdf12345"}; 
+const user5 = {email: "fordjason363@gmail.com",password: "asdfasdf12345"}; 
 
 
 async function scrapePostsV2(bot, userConfig, iteration){
@@ -140,7 +141,7 @@ async function scrapePostsV2(bot, userConfig, iteration){
     }
   }
   
-  openLinkedIn(browser, page, user1, userConfig)
+  openLinkedIn(browser, page, user5, userConfig)
 
   const waitUntil = (condition) => {
    return new Promise((resolve) => {
