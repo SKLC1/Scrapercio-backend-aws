@@ -141,7 +141,7 @@ async function scrapePostsV2(bot, userConfig, iteration){
     }
   }
   
-  openLinkedIn(browser, page, user5, userConfig)
+  openLinkedIn(browser, page, user1, userConfig)
 
   const waitUntil = (condition) => {
    return new Promise((resolve) => {
