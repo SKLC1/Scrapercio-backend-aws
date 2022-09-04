@@ -22,7 +22,7 @@ resumeRouter.post('/scrape', async (req,res)=>{
 
 resumeRouter.post('/test', async (req,res)=>{
   try {
-    const testRes = await scrapeTest({email: "tamirgalim@gmail.com",password: "asdfasdf12345"}, req.body)
+    const testRes = await scrapeTest({email: "danocohen333@gmail.com",password: "asdfasdf12345"}, req.body)
     res.json(testRes)
   } catch (error) {
     res.json({message: error.message})
